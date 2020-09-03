@@ -1,0 +1,16 @@
+
+q
+java:S2095"EUse try-with-resources or close this "Session" in a "finally" clause.(íÊ‹ƒúÿÿÿÿHÕ?RBLOCKERZBUG
+p	java:S1067"9Replace this use of System.out or System.err by a logger.(…õ„Ðÿÿÿÿÿ8¡£ý«Ä.HÚ?RMAJORZ
+CODE_SMELL
+Š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‹âå×øÿÿÿÿHÖ?RMINORZ
+CODE_SMELL
+Š
+java:S2293'"YReplace the type specification in this constructor call with the diamond operator ("<>").(·—š¼þÿÿÿÿH×?RMINORZ
+CODE_SMELL
+n
+java:S18747"6Remove this use of "createCriteria"; it is deprecated.(…õ„Ðÿÿÿÿÿ8¡£ý«Ä.HÛ?RMINORZ
+CODE_SMELL
+Š
+java:S2293+"YReplace the type specification in this constructor call with the diamond operator ("<>").(ªð§ïúÿÿÿÿHØ?RMINORZ
+CODE_SMELL

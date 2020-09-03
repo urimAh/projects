@@ -1,0 +1,9 @@
+
+„
+java:S1128"LRemove this unused import 'com.projects.project_management.models.Projects'.(ì¶Áõıÿÿÿÿ8§èßÃ.H²GRMINORZ
+CODE_SMELL
+ˆ	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğ¦Ïòüÿÿÿÿ8©£¦Ä.H³GRMINORZ
+CODE_SMELL
+i
+java:S1128"1Remove this unused import 'java.util.Collection'.(¹ÉĞšùÿÿÿÿ8—ÏåäÃ.H±GRMINORZ
+CODE_SMELL

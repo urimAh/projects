@@ -1,0 +1,13 @@
+package com.projects.project_management.repositories;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.projects.project_management.models.ProjectChanges;
+import com.projects.project_management.models.Projects;
+
+public interface ProjectsRepository extends JpaRepository<Projects, Integer>{
+	public void deleteById(int id);
+
+}

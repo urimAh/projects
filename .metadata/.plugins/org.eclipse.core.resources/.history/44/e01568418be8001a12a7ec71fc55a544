@@ -1,0 +1,15 @@
+spring.datasource.url=jdbc:mysql://localhost:3306/projectsdb
+spring.datasource.username=root
+spring.datasource.password =Visionary2017
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.hibernate.naming-strategy=org.hibernate.cfg.ImprovedNamingStrategy
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
+bezkoder.app.jwtSecret= bezKoderSecretKey
+bezkoder.app.jwtExpirationMs= 86400000
+
+spring.devtools.restart.enabled = true
+
+
+
+spring.logging.file.path=.             # write logs to the current directory
+spring.logging.file.path=/mnt/logdir   # write logs to /mnt/logdir

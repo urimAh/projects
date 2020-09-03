@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\Users\ahmetaj\git\hibernate"/>
+			<item value="C:\Users\ahmetaj\OneDrive\Desktop\HibernateOneToManyMapping"/>
+			<item value="C:\Users\ahmetaj\OneDrive\Desktop\registration-login-springboot-security-thymeleaf-master"/>
+			<item value="C:\Users\ahmetaj\OneDrive\Desktop\TST\spring-boot-spring-security-jwt-authentication-master"/>
+			<item value="C:\Users\ahmetaj\git\spring-boot-vuejs"/>
+			<item value="C:\Users\ahmetaj\OneDrive\Desktop\spring-boot-spring-security-jwt-authentication-master"/>
+			<item value="C:\Users\ahmetaj\OneDrive\Desktop\spring-security-jpa-master"/>
+			<item value="C:\Users\ahmetaj\OneDrive\Desktop\spring-security-jdbc-authentication-example"/>
+			<item value="C:\Users\ahmetaj\git\pdf"/>
+			<item value="C:\Users\ahmetaj\git\spring-boot-user-registration"/>
+			<item value="C:\Users\ahmetaj\OneDrive\Desktop\spring-boot-user-registration-master"/>
+			<item value="C:\Users\ahmetaj\OneDrive\Desktop\spring-security-login-form-database-annotation"/>
+			<item value="C:\Users\ahmetaj\OneDrive\Desktop\projectManagement\project_management"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>

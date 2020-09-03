@@ -1,0 +1,72 @@
+package com.projects.project_management.controllers;
+
+import java.security.Principal;
+import java.util.Base64;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.projects.project_management.Dto.User;
+import com.projects.project_management.Dto.UserDto;
+import com.projects.project_management.repositories.UserRepository;
+
+@RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
+
+public class HomeResource {
+
+	@GetMapping("/")
+	public String home() {
+		return ("<h1>Welcome</h1>");
+	}
+
+	@GetMapping("/user")
+	public String user() {
+		return ("<h1>Welcome User</h1>");
+	}
+
+	@GetMapping("/admin")
+	public String admin() {
+		return ("<h1>Welcome Admin</h1>");
+	}
+
+	@Autowired
+	PasswordEncoder passwordEncoder;
+
+	@Autowired
+	private UserRepository userRepository;
+
+	@RequestMapping("/register")
+	public String doRegister(@ModelAttribute UserDto userDto) {
+		String encodedPassword = passwordEncoder.encode(userDto.getPassword());
+
+		User user = new User();
+		user.setActive(Boolean.TRUE);
+		user.setRoles(userDto.getRole());
+		user.setPassword(encodedPassword);
+		user.setUserName(userDto.getUsername());
+		userRepository.save(user);
+
+		return "register-success";
+	}
+
+	@RequestMapping("/loginTST")
+	public boolean login(@Nullable @RequestBody UserDto user) {
+		return user.getUsername().equals("user") && user.getPassword().equals("password");
+	}
+
+	@RequestMapping("/userTST")
+	public Principal user(HttpServletRequest request) {
+		String authToken = request.getHeader("Authorization").substring("Basic".length()).trim();
+		return () -> new String(Base64.getDecoder().decode(authToken)).split(":")[0];
+	}
+}

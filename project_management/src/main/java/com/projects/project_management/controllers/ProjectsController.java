@@ -1,0 +1,219 @@
+package com.projects.project_management.controllers;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import javax.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.SortDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.projects.project_management.ReqRes.JwtResponse;
+import com.projects.project_management.ReqRes.LoginRequest;
+import com.projects.project_management.ReqRes.MessageResponse;
+import com.projects.project_management.ReqRes.SignupRequest;
+import com.projects.project_management.configurations.JwtUtils;
+import com.projects.project_management.models.ERole;
+import com.projects.project_management.models.ProjectChanges;
+import com.projects.project_management.models.Projects;
+import com.projects.project_management.models.Role;
+import com.projects.project_management.models.User;
+import com.projects.project_management.repositories.ProjectsChangeRepository;
+import com.projects.project_management.repositories.ProjectsRepository;
+import com.projects.project_management.repositories.RoleRepository;
+import com.projects.project_management.repositories.UserRepository;
+import com.projects.project_management.services.UserDetailsImpl;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Order;
+
+@CrossOrigin(origins = "*", maxAge = 3600)
+@RestController
+@RequestMapping("/api/auth")
+@Slf4j
+public class ProjectsController {
+	@Autowired
+	AuthenticationManager authenticationManager;
+
+	@Autowired
+	UserRepository userRepository;
+
+	@Autowired
+	RoleRepository roleRepository;
+
+	@Autowired
+	PasswordEncoder encoder;
+
+	@Autowired
+	ProjectsRepository projectsRepository;
+
+	@Autowired
+	ProjectsChangeRepository projectsChangeRepository;
+
+	@Autowired
+	ProjectsChangeRepository projectsRepositories;
+
+	@Autowired
+	JwtUtils jwtUtils;
+
+	@GetMapping(path = "/projectHistory/{Id}")
+	List<ProjectChanges> loadProjectHistory(@PathVariable(value = "Id") int id) throws Exception {
+		List<ProjectChanges> projectHistory = projectsRepositories.findAllProjectChnagesById(id);
+		return projectHistory;
+	}
+
+	@DeleteMapping(path = "/deleteProject/{Id}")
+	public void deleteProject(@PathVariable(value = "Id") int id) throws Exception {
+		log.info("Start | deleting project with id {}  ", id);
+		projectsRepositories.deleteAllWithQuery(id);
+		projectsRepository.deleteById(id);
+		projectsRepository.flush();
+		log.info("End | project with id  {}  deleted", id);
+
+	}
+
+	private Sort.Direction getSortDirection(String direction) throws Exception {
+		if (direction.equals("asc")) {
+			return Sort.Direction.ASC;
+		} else if (direction.equals("desc")) {
+			return Sort.Direction.DESC;
+		}
+
+		return Sort.Direction.ASC;
+	}
+
+	@GetMapping(path = "/projects")
+	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+	public ResponseEntity<Map<String, Object>> loadAllProjects(@RequestParam(required = false) String searchTitle,
+			@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size,
+			@RequestParam(defaultValue = "title,desc") String[] sort) throws Exception {
+
+		List<Order> orders = new ArrayList<Order>();
+
+		if (sort[0].contains(",")) {
+			for (String sortOrder : sort) {
+				String[] _sort = sortOrder.split(",");
+				orders.add(new Order(getSortDirection(_sort[1]), _sort[0]));
+			}
+		} else {
+			orders.add(new Order(getSortDirection(sort[1]), sort[0]));
+		}
+
+		List<Projects> projects = new ArrayList<Projects>();
+		Pageable pagingSort = PageRequest.of(page, size, Sort.by(orders));
+		Page<Projects> pageTuts;
+
+		if (searchTitle == null) {
+			pageTuts = projectsRepository.findAll(pagingSort);
+		} else {
+			pageTuts = projectsRepository.findByTitle(searchTitle, pagingSort);
+		}
+		projects = pageTuts.getContent();
+
+		if (projects.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+
+		Map<String, Object> response = new HashMap<>();
+		response.put("projects", projects);
+		response.put("currentPage", pageTuts.getNumber());
+		response.put("totalItems", pageTuts.getTotalElements());
+		response.put("totalPages", pageTuts.getTotalPages());
+
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/createSProject", method = RequestMethod.POST)
+	public void test(@RequestBody Projects request) throws Exception {
+		log.info("User with id started modifying project project with id{} ", request.getProject_id());
+		Projects prj = new Projects();
+		java.util.Date date = new java.util.Date();
+		java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime());
+		prj.setProject_id(request.getProject_id());
+		prj.setTitle(request.getTitle());
+		prj.setDescription(request.getDescription());
+		prj.setUser_creator_id(request.getUser_creator_id());
+		prj.setCreation_date(timestamp);
+		ProjectChanges pjrjCh = new ProjectChanges();
+		pjrjCh.setDescription(request.getDescription());
+		pjrjCh.setTimeDateCreated(timestamp);
+		pjrjCh.setTitle("test");
+		Set<ProjectChanges> prjcts = new HashSet<ProjectChanges>();
+		prjcts.add(pjrjCh);
+		prj.setProjectChange(prjcts);
+		pjrjCh.setProjects(prj);
+		projectsRepository.saveAndFlush(prj);
+		log.info("End | project modified");
+
+	}
+
+	@PostMapping("/signin")
+	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+		log.info("Start | Authenticating user {} ", loginRequest.getUsername());
+		Authentication authentication = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		String jwt = jwtUtils.generateJwtToken(authentication);
+		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+		List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
+				.collect(Collectors.toList());
+		log.info("Acces granted for user {} ", loginRequest.getUsername());
+
+		return ResponseEntity.ok(
+				new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles));
+	}
+
+	@PostMapping("/signup")
+	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
+		}
+
+		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
+		}
+		User user = new User(signUpRequest.getUsername(), signUpRequest.getEmail(),
+				encoder.encode(signUpRequest.getPassword()));
+
+		Set<Role> roles = new HashSet<>();
+		Role rol = new Role();
+		rol.setName(ERole.ROLE_USER);
+		roles.add(rol);
+
+		roleRepository.saveAndFlush(rol);
+		user.setRoles(roles);
+		userRepository.save(user);
+		log.info("END | new user saved wuth username {} ", signUpRequest.getUsername());
+
+		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+	}
+}

@@ -1,0 +1,10 @@
+
+Ä
+java:S1130."’Remove the declaration of thrown exception 'org.springframework.security.core.userdetails.UsernameNotFoundException' which is a runtime exception.(°Ô¦üýÿÿÿÿH§	RMINORZ
+CODE_SMELL
+p
+java:S1854<"?Remove this useless assignment to local variable "createdUser".(üþÂ£üÿÿÿÿH¨	RMAJORZ
+CODE_SMELL
+a
+java:S1481<"0Remove this unused "createdUser" local variable.(üþÂ£üÿÿÿÿH©	RMINORZ
+CODE_SMELL

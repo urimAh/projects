@@ -1,0 +1,11 @@
+package com.projects.project_management.configurations;
+
+@Configuration
+@EnableWebMvc
+public class WebConfig implements WebMvcConfigurer {
+ 
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**");
+    }
+}

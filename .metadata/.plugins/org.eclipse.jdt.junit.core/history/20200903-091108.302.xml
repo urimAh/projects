@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ProjectManagementApplicationTests" project="project_management" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.projects.project_management.ProjectManagementApplicationTests" time="0.002" displayname="ProjectManagementApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.projects.project_management.ProjectManagementApplicationTests]">
+    <testcase name="contextLoads" classname="com.projects.project_management.ProjectManagementApplicationTests" time="0.002" displayname="contextLoads()" uniqueid="[engine:junit-jupiter]/[class:com.projects.project_management.ProjectManagementApplicationTests]/[method:contextLoads()]"/>
+  </testsuite>
+</testrun>

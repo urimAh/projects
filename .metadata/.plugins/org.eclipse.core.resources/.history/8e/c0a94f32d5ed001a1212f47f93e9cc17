@@ -1,0 +1,19 @@
+spring.datasource.url=jdbc:mysql://localhost:3306/projectsdb
+spring.datasource.username=root
+spring.datasource.password =Visionary2017
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.hibernate.naming-strategy=org.hibernate.cfg.ImprovedNamingStrategy
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
+spring.jackson.serialization.fail-on-empty-beans=false
+
+spring.devtools.restart.enabled = true
+
+logging.pattern.console=%d{yyyy-MM-dd HH:mm:ss} - %msg%n
+logging.level.root=info
+logging.file.path=.          
+logging.file.name=myapp.log
+logging.pattern.file= "%d{yyyy-MM-dd } [%thread] %-5level %logger{36} - %msg%n"
+
+
+jwtSecret= SecretKey
+jwtExpirationMs= 86400000

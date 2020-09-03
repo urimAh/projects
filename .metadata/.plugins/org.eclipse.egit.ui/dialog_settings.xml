@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="EGit.KnownHosts">
+		<item value="git.eclipse.org"/>
+		<item value="bitbucket.org"/>
+		<item value="github.com"/>
+	</list>
+	<list key="RepositorySelectionPage.UsedUris">
+		<item value="https://github.com/lokeshgupta1981/hibernate.git"/>
+		<item value="https://github.com/jonashackt/spring-boot-vuejs.git"/>
+		<item value="https://github.com/eugenp/tutorials.git"/>
+		<item value="https://github.com/eugenp/tutorials/tree/master/spring-security-modules/spring-security-web-angular/client/angular6"/>
+		<item value="https://github.com/YogenRaii/pdf.git"/>
+		<item value="https://github.com/kamer/spring-boot-user-registration.git"/>
+	</list>
+</section>

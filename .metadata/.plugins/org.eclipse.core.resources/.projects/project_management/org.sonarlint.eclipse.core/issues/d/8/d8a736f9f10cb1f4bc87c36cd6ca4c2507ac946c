@@ -1,0 +1,14 @@
+
+†
+java:S1128
+"NRemove this unused import 'org.springframework.data.jpa.repository.Modifying'.(—·Ñ”şÿÿÿÿ8õÙ«¥Ä.H°SRMINORZ
+CODE_SMELL
+…
+java:S1128"RRemove this unused import 'com.projects.project_management.models.ProjectChanges'.(•¡ğ8õ³®ÔÃ.H±SRMINORZ
+CODE_SMELL
+t
+java:S1128"<Remove this unused import 'javax.transaction.Transactional'.(ûÒçÑúÿÿÿÿ8õÙ«¥Ä.H²SRMINORZ
+CODE_SMELL
+c
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8õ³®ÔÃ.H³SRMINORZ
+CODE_SMELL

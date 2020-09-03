@@ -1,0 +1,37 @@
+package com.projects.project_management.models;
+
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name = "projects")
+@Getter
+@Setter
+public class Projects {
+	@Id
+	private int project_id;
+	String title;
+	String description;
+	boolean staus;
+	int user_creator_id;
+	int last_user_modifier_id;
+	String creation_date;
+
+	@OneToMany(targetEntity = ProjectChanges.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	@JoinColumn(name = "projects_project_id", referencedColumnName = "project_id", insertable = false, updatable = false)
+	@JsonBackReference
+	private Set<ProjectChanges> projectChange;
+
+}

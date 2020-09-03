@@ -1,0 +1,71 @@
+
+…
+java:S2293¤"YReplace the type specification in this constructor call with the diamond operator ("<>").(ŠùÏ2H¨VRMINORZ
+CODE_SMELL
+[
+java:S1128"/Remove this unused import 'java.util.Iterator'.(¥ÍòÕH§VRMINORZ
+CODE_SMELL
+P
+java:S3751Z"Make this method "public".(âå¥úÿÿÿÿH©VRBLOCKERZVULNERABILITY
+[
+java:S1452Ä"&Remove usage of generic wildcard type.(éã°éúÿÿÿÿH–VRCRITICALZ
+CODE_SMELL
+{	java:S117u"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•±ÒRHŸVRMINORZ
+CODE_SMELL
+s
+java:S4684–"@Replace this persistent entity with a simple POJO or DTO object.(ÀˆÕ¯H’VRCRITICALZVULNERABILITY
+`
+java:S1128
+"/Remove this unused import 'java.util.Optional'.(¨˜ëİüÿÿÿÿH¤VRMINORZ
+CODE_SMELL
+o
+java:S1128"CRemove this unused import 'java.util.concurrent.ThreadLocalRandom'.(¨ÏÙîHVRMINORZ
+CODE_SMELL
+_
+java:S1481Ï"-Remove this unused "strRoles" local variable.(Õ‘óÍûÿÿÿÿH™VRMINORZ
+CODE_SMELL
+w
+java:S4488•"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(àûŠÅH VRMINORZ
+CODE_SMELL
+Y
+java:S1612¼",Replace this lambda with a method reference.(Ğ×«ëH¦VRMINORZ
+CODE_SMELL
+W
+java:S5411Å"*Use the primitive boolean expression here.(‡Ö…²HVRMINORZ
+CODE_SMELL
+’
+java:S1488U"fImmediately return this expression instead of assigning it to the temporary variable "projectHistory".(×ñöëH•VRMINORZ
+CODE_SMELL
+…
+java:S2293q"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÉŞÖ€H”VRMINORZ
+CODE_SMELL
+…
+java:S2293|"YReplace the type specification in this constructor call with the diamond operator ("<>").(‹ºšôH¥VRMINORZ
+CODE_SMELL
+g	java:S125*"<This block of commented-out lines of code should be removed.(óÒÌÖHšVRMAJORZ
+CODE_SMELL
+n
+java:S1854Ï"<Remove this useless assignment to local variable "strRoles".(Õ‘óÍûÿÿÿÿH›VRMAJORZ
+CODE_SMELL
+i	java:S106"9Replace this use of System.out or System.err by a logger.(â§¤£ÿÿÿÿÿH“VRMAJORZ
+CODE_SMELL
+h
+java:S1854|"<Remove this useless assignment to local variable "projects".(‹ºšôHœVRMAJORZ
+CODE_SMELL
+v
+java:S1128"ERemove this unused import 'org.springframework.data.web.SortDefault'.(ü­©‚øÿÿÿÿH‘VRMINORZ
+CODE_SMELL
+W
+java:S5411É"*Use the primitive boolean expression here.(Œ‰ÓŒH—VRMINORZ
+CODE_SMELL
+b
+java:S1128"1Remove this unused import 'java.util.Collection'.(¹ÉĞšùÿÿÿÿHVRMINORZ
+CODE_SMELL
+t
+java:S1128"IRemove this unused import 'org.springframework.data.web.PageableDefault'.(¯’Î<H˜VRMINORZ
+CODE_SMELL
+P
+java:S3751T"Make this method "public".(£úûÿÿÿÿH¡VRBLOCKERZVULNERABILITY
+V
+java:S1452³"&Remove usage of generic wildcard type.(—­è€H¢VRCRITICALZ
+CODE_SMELL

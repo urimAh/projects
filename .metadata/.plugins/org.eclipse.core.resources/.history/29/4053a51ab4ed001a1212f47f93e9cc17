@@ -1,0 +1,21 @@
+package com.projects.project_management;
+
+import org.junit.jupiter.api.extension.ExtendWith;
+
+@ExtendWith(SpringExtension.class)
+@DataJpaTest
+class UserEntityRepositoryTest {
+
+  @Autowired private DataSource dataSource;
+  @Autowired private JdbcTemplate jdbcTemplate;
+  @Autowired private EntityManager entityManager;
+  @Autowired private UserRepository userRepository;
+
+  @Test
+  void injectedComponentsAreNotNull(){
+    assertThat(dataSource).isNotNull();
+    assertThat(jdbcTemplate).isNotNull();
+    assertThat(entityManager).isNotNull();
+    assertThat(userRepository).isNotNull();
+  }
+}

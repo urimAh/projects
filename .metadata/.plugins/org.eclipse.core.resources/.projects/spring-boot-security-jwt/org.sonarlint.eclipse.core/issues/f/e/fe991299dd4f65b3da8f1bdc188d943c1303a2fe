@@ -1,0 +1,20 @@
+
+V
+java:S5411S"*Use the primitive boolean expression here.(Œ‰ÓŒH°TRMINORZ
+CODE_SMELL
+X
+java:S1612A",Replace this lambda with a method reference.(¡©é½H›TRMINORZ
+CODE_SMELL
+V
+java:S5411M"*Use the primitive boolean expression here.(‡Ö…²H±TRMINORZ
+CODE_SMELL
+U
+java:S14527"&Remove usage of generic wildcard type.(—­è€HŸTRCRITICALZ
+CODE_SMELL
+s	java:S125h"<This block of commented-out lines of code should be removed.(æøØúÿÿÿÿ8×ßôÄ.H¸TRMAJORZ
+CODE_SMELL
+p
+java:S2583g"DChange this condition so that it does not always evaluate to "false"(ÞåÅŠ8”ÂâóÄ.H´TRMAJORZBUG
+Z
+java:S1452L"&Remove usage of generic wildcard type.(éã°éúÿÿÿÿH¯TRCRITICALZ
+CODE_SMELL

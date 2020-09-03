@@ -1,0 +1,18 @@
+package com.projects.project_management.repositories;
+
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.projects.project_management.models.ProjectChanges;
+import com.projects.project_management.models.Projects;
+
+public interface ProjectsChangeRepository extends JpaRepository<ProjectChanges, Integer> {
+	List<ProjectChanges> findById(int id);
+
+
+	@Query(value = "select * from project_changes LEFT JOIN projects ON project_changes.project_id=project.project_id  where project_changes.project_id=?  ", nativeQuery = true)
+	List<ProjectChanges> findAllProjectChnagesById(int id);
+}

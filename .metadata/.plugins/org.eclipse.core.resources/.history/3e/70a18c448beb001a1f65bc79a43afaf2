@@ -1,0 +1,18 @@
+package com.projects.project_management.repositories;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.projects.project_management.models.ProjectChanges;
+import com.projects.project_management.models.Projects;
+
+public interface ProjectsRepository extends JpaRepository<Projects, Integer>{
+	
+	
+	@Query(value = "SET FOREIGN_KEY_CHECKS=0;Delete From projects where project_id=?", nativeQuery = true)
+	
+	public void deleteById(int id);
+
+}
